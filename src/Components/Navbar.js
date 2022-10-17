@@ -1,22 +1,20 @@
 import React from 'react'
 import styled from 'styled-components';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-// import { faCartShopping } from '@fortawesome/free-regular-svg-icons'
 
 
+function Navbar(props) {
 
-function Navbar() {
-
-    const count = useSelector((state)=>state.Cart)
+    const count = useSelector((state) => state.Cart)
 
 
     // Styled Components ///////////////////////////
 
     const Nav = styled.nav`
-    height: 40px ;
+    height: 50px ;
     
     h5{
         padding-bottom: 0;
@@ -49,28 +47,36 @@ function Navbar() {
 
     .navbar-nav{
         align-items:center ;
+        margin-right:20px ;
+        margin-top:5px ;
     }
     `;
 
     return (
-        
-            <Nav className="navbar fixed-top navbar-expand-lg bg-light">
-                <div className="container-fluid">
-                    <Link className="navbar-brand" to="">DM<samp>_iSTORE</samp></Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div className="navbar-nav">
-                            <Link className="nav-link " aria-current="page" to ="/">Home</Link>
-                            <a className="nav-link" href="#new">Products</a>
-                            <a className="nav-link" href="#collection">Collections</a>
-                            <h5 className='nav-link'><FontAwesomeIcon icon={faCartShopping}/> {count.length}</h5>
-                        </div>
+
+        <Nav className="navbar fixed-top navbar-expand-lg bg-light">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="">DM<samp>_iSTORE</samp></Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div className="navbar-nav">
+                        <Link className="nav-link " aria-current="page" to="/">Home</Link>
+                        <a className="nav-link" href="#new">{props.Products}</a>
+                        <a className="nav-link" href="#collection">{props.Collections}</a>
+                        {/* <h5 className='nav-link'><FontAwesomeIcon icon={faCartShopping}/> {count.length}</h5> */}
+                        <button type="button" className="btn btn-sm  position-relative">
+                       <Link to="/cart"><FontAwesomeIcon icon={faCartShopping}/></Link> 
+                            <span className="position-absolute top-3 start-100 translate-middle badge rounded-pill bg-danger">
+                                {count.length}
+                            </span>
+                        </button>
                     </div>
                 </div>
-            </Nav>
-        
+            </div>
+        </Nav>
+
     )
 }
 

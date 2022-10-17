@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import product_data from '../products.json'
 import styled from 'styled-components'
+import Navbar from './Navbar'
 
 function Collections(props) {
     const [products, setProducts] = useState([])
@@ -64,6 +65,8 @@ function Collections(props) {
 
 
     return (
+    <>
+    <Navbar/>
         <Wrapper>
             <h1>{props.heading}</h1>
             <Cart className='container'>
@@ -82,6 +85,7 @@ function Collections(props) {
 
             </Cart>
         </Wrapper>
+        </>
 
 
     )

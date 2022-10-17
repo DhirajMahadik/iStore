@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import background_Image from '../Images/Web_Background.jpg'
 import Categories from './Categories';
+import Navbar from './Navbar';
 import NewProducts from './NewProducts';
 
 
@@ -57,6 +58,7 @@ h1{
 
   return (
     <>
+    <Navbar Products ="Products" Collections ="Collection"/>
     <Section>
     <div className ="banner_content">
     <h1>Final</h1>
